@@ -11,8 +11,15 @@ const discountedCourses = discountCourses(coursesUpTo80Dollars, 10);
 const result = pipe(
   courses,
   filterByMinPrice2(80),
+  discountCoursesByPercent(10),
+  calculateTotalPrice
+);
+
+const applyDiscountForCourses = flow(
+  filterByMinPrice2(80),
   discountCoursesByPercent(10)
 );
 
 console.log("result", result);
+
 //console.log("flowResult", flowResult);
